@@ -1,0 +1,8 @@
+.mce-statusbar{ margin : 0px!important; height: 5px !important; }
+.mce-path{ display: none !important; }
+.mce-path-item{ display: none !important; }
+.mce-resizehandle{ left: 0px; }
+i.mce-i-resize{ padding-left: 365px; margin-top: 4px !important; }
+.mce-i-resize::before{ content: url(resize.png) !important; }
+
+/* .mce-branding{ display: none !important; } */

@@ -1,0 +1,19 @@
+<script src='{ROOT_PATH}/template/tinymce/tinymce.min.js'></script>
+<link href="{ROOT_PATH}/template/tinymce/resize.css" rel="stylesheet">
+<script type="text/javascript" language="javascript">
+  tinymce.init({
+    <!-- selector: '#mytextarea', -->
+	selector : 'textarea',
+	resize: true, 
+	elementpath: false,
+	branding: false,
+	
+	plugins : 'autoresize image lists advlist autolink link textcolor colorpicker table',
+	autoresize_max_height: 300,
+	width : 750,
+	
+	menubar: false,
+	toolbar: 'undo redo | bold italic underline strikethrough superscript subscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor',
+	//statusbar: false,
+  });
+</script>

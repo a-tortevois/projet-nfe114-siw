@@ -1,0 +1,725 @@
+/* --------------------------------------------------------
+ *   Color
+ * -------------------------------------------------------- */
+ :root{
+	--text : #646464;
+	--valid : #00b400;
+	--bg-valid : #e6ffe6;
+	--error : #b40000;
+	--bg-error : #ffe6e6;
+	--light-gey : #f2f1f2;	
+	--dark-grey : #bfbdbd;
+	--light-orange : #ff9900;
+	--dark-orange : #ff6800;
+}
+
+/* --------------------------------------------------------
+ *   Commun
+ * -------------------------------------------------------- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	/* background-color: #f2f1f2; */
+	background: no-repeat top center url('../img/background.png') #f2f1f2;
+}
+
+body, table {
+	font-family: Verdana; 
+	font-size: 11.5px;
+	color: var(--text);
+}
+
+body {
+	width: 960px;
+	margin: 0 auto;
+}
+
+header, main, footer {
+	background-color: #ffffff;
+	border-left: 1px solid var(--dark-grey);
+	border-right: 1px solid var(--dark-grey);
+}
+
+header {
+	margin: 0;
+	padding: 5px 0 0 15px;
+}
+
+main {
+	margin: 0;
+	padding: 15px 0;
+	min-height: calc(100% - 152px); /* header : 82px + padding main : 30 px + footer : 40px */
+}
+
+footer {
+	margin: 0;
+	padding: 0;
+	height: 40px;
+	text-align: center;
+}
+
+nav {
+	margin: -15px 0 15px 0;
+	text-align: center;
+}
+
+a, a:link, a:visited {
+	color: var(--text);
+	text-decoration: underline;
+}
+
+a:hover, a:active, a:focus {
+	color: var(--dark-orange);
+	text-decoration: none;
+}
+
+/* --------------------------------------------------------
+ *   Message box
+ * -------------------------------------------------------- */
+ 
+#user_box {
+	position: absolute;
+	top: 0;
+	right: calc( (100% - 960px) / 2 + 20px);
+}
+
+#user_box-content {
+	position: relative;
+	height: 75px;
+	text-align: right;
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+#msg_box {
+	width: 780px;
+	margin: 0 auto;
+	padding: 10px;
+	border-radius: 10px
+}
+
+#msg_box.error {
+	color: var(--error);
+	background-color: var(--bg-error);
+	border: 1px solid var(--error);
+}
+
+#msg_box.error a, #msg_box.error a:link, #msg_box.error a:visited {
+	color: var(--error);
+}
+
+#msg_box.error a:hover, #msg_box.error a:active, #msg_box.error a:focus {
+	color: #ff8080;
+}
+
+#msg_box.valid {
+	color: var(--valid);
+	background-color: var(--bg-valid);
+	border: 1px solid var(--valid);
+}
+
+#msg_box.valid a, #msg_box.valid a:link, #msg_box.valid a:visited {
+	color: var(--valid);
+}
+
+#msg_box.valid a:hover, #msg_box.valid a:active, #msg_box.valid a:focus {
+	color: #80ff80;
+}
+
+/* --------------------------------------------------------
+ *   Formulaire - commun
+ * -------------------------------------------------------- */
+
+form {
+	margin: 0 auto;
+}
+
+form#login,
+form#wishlist,
+form#gift,
+form#share {
+	padding: 20px 0;
+}
+
+fieldset {
+	width: 780px;
+	margin: 0 auto;
+	padding: 10px;
+	border: 1px solid var(--dark-orange);
+	border-radius: 10px;
+}
+
+legend {
+	display: block;
+	width: calc(100% + 10px);
+	margin-left: -11px;
+	padding: 5px;
+	background-image: linear-gradient( to right, var(--light-orange), var(--dark-orange));
+	background-color: var(--light-orange);
+	border: 1px solid var(--dark-orange);
+	border-radius: 10px 10px 0 0;
+	text-align: left;
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+	
+}
+
+#login p,
+#wishlist p, 
+#gift p  {
+	margin : 0 0 10px 0;
+	padding : 0;
+}
+
+input,
+input:required {
+	height: 20px;
+	padding: 0 25px 0 3px;
+	background: #ffffff;
+	border: 1px solid var(--dark-grey);
+}
+
+input:focus,
+input:required:focus {
+	border-color: var(--light-orange);
+	background: var(--light-gey);
+}
+
+input:hover,
+input:required:hover {
+	border-color: var(--light-orange);
+	background: #ffffff;
+}
+
+input:not([type="submit"]):valid {
+	border-color: var(--valid);
+	background-color: var(--bg-valid);
+}
+
+span.validator {
+	position: absolute;
+	height: 14px;
+	width: 14px;	
+	margin: 6px 0 0 -18px;
+}
+	
+input:valid ~ span.validator {
+	background-color: var(--valid);
+	-webkit-mask: url("../img/check.svg") no-repeat 50% 50%;
+    mask: url("../img/check.svg") no-repeat 50% 50%;
+}
+
+input:not(:placeholder-shown):invalid {
+	border-color: var(--error);
+	background-color: var(--bg-error);
+}
+
+input:not(:placeholder-shown):invalid ~ span.validator {
+	background-color: var(--error);
+	-webkit-mask: url("../img/cross.svg") no-repeat 50% 50%;
+    mask: url("../img/cross.svg") no-repeat 50% 50%;
+}
+
+/*
+input:invalid {
+	border-color: var(--error);
+	background: var(--bg-error) url("../img/form_invalid.png") right 1% center no-repeat;
+}
+*/
+
+input[type="submit"],
+input.button_cancel {
+	padding: 1px;
+	width: 156px;
+	height: 24px;
+	display: inline;
+	border: 1px solid var(--dark-grey);
+	background-color: #ffffff;
+}
+
+input.button_cancel {
+	margin: 0 0 0 20px;
+}
+
+input:hover[type="submit"],
+input:focus[type="submit"],
+input.button_cancel:hover,
+input.button_cancel:focus {
+	color:  var(--dark-orange);
+	border: 1px solid var(--light-orange);
+	background-color: var(--light-gey);
+}
+
+input:hover:valid,
+input:hover:invalid {
+	border-color: var(--light-orange);
+}
+
+/* --------------------------------------------------------
+ *   Info bulle
+ * -------------------------------------------------------- */
+ 
+.help {
+	position: relative;
+	cursor: help;
+}
+
+.help img {
+	background-color: var(--light-gey);
+	-webkit-mask: url("../img/question.svg") no-repeat;
+    mask: url("../img/question.svg") no-repeat;
+	position: relative;
+	height: 18px;
+	width: 18px;	
+	top: 3px;
+	left: 5px;
+}
+
+.help:hover img {
+	background-color: var(--dark-grey);
+}
+
+.help span { 
+	visibility: hidden;
+	width: 270px;	
+	height: auto;
+	position: absolute;
+	top: 0;
+	left: 30px;	
+	padding : 3px;
+	font-size: 10px;
+	color: var(--text);
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); /* offset-x | offset-y | blur-radius | spread-radius | color */
+	border: 2px solid #e4cf8e;
+	border-radius : 5px;
+	background-image: linear-gradient( to bottom, #fff5d6, #ffecb0);
+	z-index: 99;
+}
+
+.help:hover span,
+.help:focus span {
+	visibility: visible;
+	/* content: attr(aria-label);  /* on affiche aria-label */
+}
+
+/* --------------------------------------------------------
+ *   Formulaire - Toogle password
+ * -------------------------------------------------------- */
+ 
+.eye-open {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 0 0 -6px -22px;
+	background: var(--light-gey);
+	border: 1px solid var(--dark-grey);
+}
+
+.eye-open::after {
+	background-color: var(--dark-grey);
+    -webkit-mask: url("../img/eye-open.svg") no-repeat 50% 50%;
+    mask: url("../img/eye-open.svg") no-repeat 50% 50%;
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;	
+	top: 2px;
+	left: 2px;
+}
+
+.eye-open:hover, 
+.eye-close:hover {
+	border: 1px solid var(--light-orange) !important;
+}
+
+.eye-close {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 0 0 -6px -22px;
+	background: var(--light-gey);
+	border: 1px solid var(--dark-grey);
+}
+
+.eye-close::after {
+	background-color: var(--dark-grey);
+    -webkit-mask: url("../img/eye-close.svg") no-repeat 50% 50%;
+    mask: url("../img/eye-close.svg") no-repeat 50% 50%;
+	content: "";
+	position: absolute;
+	height: 16px;
+	width: 16px;	
+	top: 2px;
+	left: 2px;
+}
+
+.hover {
+	border-color: var(--light-orange) !important;
+}
+
+form#login input#password:valid ~ .eye-open,
+form#login input#new_pwd1:valid ~ .eye-open, 
+form#login input#new_pwd2:valid ~ .eye-open,
+form#login input#password:valid ~ .eye-close,
+form#login input#new_pwd1:valid ~ .eye-close, 
+form#login input#new_pwd2:valid ~ .eye-close {
+	background-color: var(--bg-valid);
+	border-color: var(--valid);
+}
+
+form#login input#password:not(:placeholder-shown):invalid ~ .eye-open,
+form#login input#new_pwd1:not(:placeholder-shown):invalid ~ .eye-open, 
+form#login input#new_pwd2:not(:placeholder-shown):invalid ~ .eye-open,
+form#login input#password:not(:placeholder-shown):invalid ~ .eye-close,
+form#login input#new_pwd1:not(:placeholder-shown):invalid ~ .eye-close, 
+form#login input#new_pwd2:not(:placeholder-shown):invalid ~ .eye-close {
+	background-color: var(--bg-error);
+	border-color: var(--error);
+}
+
+form#login input#password,
+form#login input#new_pwd1, 
+form#login input#new_pwd2 {
+	width: 110px;
+	padding: 0 40px 0 3px;
+}
+
+form#login input#password:valid ~ span.validator,
+form#login input#new_pwd1:valid ~ span.validator, 
+form#login input#new_pwd2:valid ~ span.validator,
+form#login input#password:not(:placeholder-shown):invalid ~ span.validator,
+form#login input#new_pwd1:not(:placeholder-shown):invalid ~ span.validator, 
+form#login input#new_pwd2:not(:placeholder-shown):invalid ~ span.validator {
+	margin: 6px 0 0 -38px;
+}
+
+/* --------------------------------------------------------
+ *   Formulaire - Login
+ * -------------------------------------------------------- */
+ 
+form#login label,
+form#share label {
+	display: inline-block;
+	width: 307px;
+	padding-top: 4px;
+	text-align: right;
+	margin-right: 5px; 
+}
+
+form#login input#username,
+form#share input#username,
+form#login input#email,
+form#share input#email {
+	width: 125px;
+}
+
+form#login .help img,
+form#share .help img  {
+	/* padding-right: 288px; */
+}
+
+/* --------------------------------------------------------
+ *   Formulaire - Wishlist / Gift
+ * -------------------------------------------------------- */
+
+form#wishlist label,
+form#gift label {
+	display: inline-block;
+	width: 307px;
+	padding-top: 4px;
+	text-align: right;
+	margin-right: 5px; 
+}
+
+form#wishlist input#title,
+form#gift input#title {
+	width: 275px;
+}
+
+form#wishlist p.is_shared {
+	margin: -5px auto 10px auto;
+	width: 100%;
+	height: 20px;
+}
+
+input#is_shared[type="checkbox"] {
+	display: none;
+}
+
+input#is_shared + label{
+	width: 329px;
+}
+
+input#is_shared[type="checkbox"] + label::after{
+	display: inline-block;
+	content: "";
+	margin: 0 0 -4px 1px;
+	width: 17px;
+	height: 17px;
+	background-image: url("../img/checkbox.png");
+}
+
+input#is_shared[type="checkbox"]:hover + label::after {
+	background-position: left -17px;
+}
+
+input#is_shared[type="checkbox"]:checked + label::after {
+	background-position: left -34px;
+	
+}
+
+input#is_shared[type="checkbox"]:checked:hover + label::after {
+	background-position: left -51px;
+} 
+
+#wishlist .help img,
+#gift .help img {
+	/* padding-right: 138px; */
+}
+
+/* --------------------------------------------------------
+ *   Table - Wishlist
+ * -------------------------------------------------------- */
+
+table#wishlist {
+	width: 798px;
+	margin: 20px auto 0 auto;
+	padding: 0;
+	border-collapse: separate;
+	border-spacing: 0;
+	vertical-align:middle;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid  var(--dark-orange);
+}
+
+table#wishlist thead {
+	height: 20px;
+	background-image: linear-gradient( to right, var(--light-orange), var(--dark-orange));
+	background-color: var(--light-orange); 
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+}
+
+table#wishlist th.title {
+	width: 500px;
+}
+
+table#wishlist th.username {
+	width: 150px;
+}
+
+table#wishlist th.action {
+}
+
+table#wishlist tr.odd {
+	background-color: var(--light-gey);
+}
+
+table#wishlist td.title {
+	padding-left: 10px;
+}
+
+table#wishlist td.username {
+	text-align: center;
+	border-width: 0 2px;
+	border-style: solid;
+	border-color: var(--light-gey);
+}
+
+table#wishlist tr.odd td.username {
+	border-color: #ffffff;
+}
+
+table#wishlist td.action {
+	padding: 4px 0;
+	text-align: center;
+}
+
+table#wishlist td.action img {
+	margin: 0 5px;
+}
+
+/* --------------------------------------------------------
+ *   Table - Gift
+ * -------------------------------------------------------- */
+
+table#gift {
+	width: 798px;
+	margin: 20px auto 0 auto;
+	padding: 0;
+	border-collapse: separate;
+	border-spacing: 0;
+	vertical-align:middle;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid var(--dark-orange);
+}
+
+table#gift thead {
+	height: 20px;
+	background-image: linear-gradient( to right, var(--light-orange), var(--dark-orange));
+	background-color: var(--light-orange);
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+}
+
+table#gift th.title {
+	padding: 0;
+}
+
+table#gift th.wcf-action {
+	width: 323px;
+}
+
+table#gift th.action {
+	width: 140px;
+}
+
+table#gift tr.odd {
+	background-color: var(--light-gey);
+}
+
+table#gift td.title {
+	padding-left: 10px;
+	border-width: 0 2px 0 0;
+	border-style: solid;
+	border-color: var(--light-gey);
+}
+
+table#gift tr.odd td.title {
+	border-color: #ffffff;
+}
+
+table#gift td.wcf-action {
+	margin: 0;
+	padding: 3px 5px 0 0;
+	text-align: center;
+	width: 90px;
+}
+
+table#gift td.action {
+	margin: 0;
+	padding: 3px 5px 0 0;
+	text-align: center;
+}
+
+table#gift td.action-form {
+	width: 230px;
+	padding: 8px 0 0 0;
+}
+
+table#gift td.action img,
+table#gift td.wcf-action img {
+  margin: 0 5px;
+}
+
+table#gift form {
+	margin: 0;
+}
+
+table#gift form select {
+	margin: -2px 10px 0 10px;
+	height: 20px;
+	width: 180px;
+}
+
+table#gift input[type="submit"],table#gift input:hover[type="submit"],table#gift input:focus[type="submit"] {
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	background-color: transparent;
+	background-image:url("../img/gift_add.png");
+	border: 0;
+	margin: -7px 0px 0px 0px;
+	cursor: pointer;
+}
+
+/* --------------------------------------------------------
+ *   Other
+ * -------------------------------------------------------- */
+ 
+#pagin {
+	text-align: center;
+	padding: 20px 0 0 0;
+}
+
+#wysiwyg {
+	width: 752px;
+	margin: 0 auto;
+	padding: 0 0 10px 0;
+}
+
+/* --------------------------------------------------------
+ *   View Gift
+ * -------------------------------------------------------- */
+
+#viewgift {
+	width: 800px;
+	margin: 15px auto;
+	
+	border: 1px solid var(--dark-orange);
+	border-radius: 10px;
+}
+
+#viewgift h1 {
+	margin: -1px;
+	text-align: center;
+	border-radius: 10px 10px 0 0;
+	background-image: linear-gradient( to right, var(--light-orange), var(--dark-orange));
+	background-color: var(--light-orange);
+	padding: 5px;
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+#viewgift #text {
+	padding: 15px;
+}
+
+#viewgift #gift-action {
+	position: relative;
+	float: right;
+	margin: -35px 3px 0 0;
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 0 5px;
+}
+
+#viewgift #gift-action img {
+	margin: 0px 5px;
+}
+
+#viewgift #action {
+	padding: 0 0 15px 0;
+	text-align: center;
+}
+
+#viewgift form {
+	display: inline-block;
+}
+
+#viewgift form input[type="submit"], #viewgift form input:hover[type="submit"], #viewgift form  input:focus[type="submit"] {
+	width: 30px;
+	height: 30px;
+	color: transparent;
+	background-color: transparent;
+	background-image:url("../img/gift_add.png");
+	border: 0;
+	margin: 0px 5px 0px 10px;
+	cursor: pointer;
+}
+
+#viewgift #action img {
+	margin: 0px 5px -10px 5px;
+}
